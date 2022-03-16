@@ -1,0 +1,72 @@
+{
+  "name": "d_hold_core",
+  "version": "1.2.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "cd src/ethereum && truffle compile && jest --runInBand",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline --copy-files --no-copy-ignored",
+    "contracts:build": "npm run contracts:clear && npm run contracts:compile && npm run contracts:type",
+    "contracts:type": "typechain --target ethers-v5 --outDir ./src/types/ 'src/ethereum/abi/**/*.json'",
+    "contracts:clear": "rm -rf ./src/ethereum/abi && rm -rf ./src/types",
+    "contracts:compile": "cd src/ethereum && truffle compile",
+    "copy-dts": "copyfiles -u 2 -s \"src/types/**/*.d.ts\" lib/types",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "prepublishOnly": "npm run contracts:build && npm run build && npm run copy-dts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/runtime": "^7.12.5",
+    "@ethersproject/abi": "^5.4.0",
+    "@openzeppelin/contracts": "^4.3.2",
+    "@openzeppelin/test-helpers": "^0.5.15",
+    "@poanet/solidity-flattener": "^3.0.6",
+    "@truffle/hdwallet-provider": "^1.4.0",
+    "@typechain/ethers-v5": "^5.0.0",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "abi-decoder": "^2.4.0",
+    "ethers": "^5.0.31",
+    "i": "^0.3.7",
+    "multi-token-standard": "^2.2.2",
+    "npm": "^8.3.0",
+    "openzeppelin-test-helpers": "^0.5.1",
+    "path": "^0.12.7",
+    "truffle-hdwallet-provider": "^1.0.17",
+    "web3": "^1.5.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/ethereumjs-abi": "^0.6.3",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.22",
+    "copyfiles": "^2.4.1",
+    "hardhat": "^2.0.10",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "truffle-plugin-verify": "^0.5.21",
+    "ts-jest": "^26.4.4",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typechain": "^4.0.1",
+    "typescript": "^4.1.3"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}

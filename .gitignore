@@ -1,0 +1,5 @@
+/lib
+node_modules/
+src/ethereum/truffle.js
+.privateKey
+.openzeppelin/.session

@@ -1,0 +1,7 @@
+export const address0 = "0x0000000000000000000000000000000000000000"
+
+export const uniswapFactory = "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f";
+export const uniswapRouter = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
+export const treasury = "0x7249A0013fCe278111BD52D55e029F55575672Cb";
+export const marketing = "0x7eD668d7B6C6B6E6f78519D948e7817F69EA31C9";
+export const lpHolder = "0x823bF3514d593d0Ee796Afe4339987812C3bf795"
