@@ -24,7 +24,9 @@ contract Kongtama is Ownable, ERC721 {
 
     uint256 private _price;
     uint256 private _maxMint;
-    uint256 private _maxMintPerWallet = 10;
+    uint256 private _maxMintPerWallet = 10;  
+    uint256 private _currentTokenID;
+
 
     string private _baseMetadataURI;
     mapping(address => uint8) public mintsPerWallet;
@@ -66,8 +68,25 @@ contract Kongtama is Ownable, ERC721 {
         _baseMetadataURI = _newBaseMetadataURI;
     }
 
+    /**
+    * @dev calculates the next token ID based on value of _currentTokenID
+    * @return uint256 for the next token ID
+    */
+    function getNextTokenID() public view returns (uint256) {
+        return _currentTokenID + 1;
+    }
 
-    function mint(address to, uint256 tokenId) public payable {
+    /**
+        * @dev increments the value of _currentTokenID
+        */
+    function _incrementTokenTypeId() private {
+        _currentTokenID++;
+    }
+
+
+    function mint(address to) public payable {
+        _incrementTokenTypeId();
+        uint256 tokenId = _currentTokenID;
         require(tokenId <= _maxMint, "TokenId is greater than maxMint");
 
         address owner = owner();

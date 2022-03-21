@@ -39,7 +39,7 @@ describe("Create2", () => {
     })
 
     it("Owner Minting", async () => {
-        await kongtamas[0].mint(addresses[0], "1");
+        await kongtamas[0].mint(addresses[0]);
         const ownerOf = await kongtamas[0].ownerOf(1);
         expect(ownerOf.toLowerCase()).toEqual(addresses[0].toLowerCase())
 
@@ -51,7 +51,7 @@ describe("Create2", () => {
         await kongtamas[0].setMaxMintPerWallet(3);
 
         //tries to mint with no ether
-        let mint = kongtamas[1].mint(addresses[1], 2);
+        let mint = kongtamas[1].mint(addresses[1]);
         await expectRevert(
             mint,
             `Wrong value`
@@ -60,16 +60,16 @@ describe("Create2", () => {
         const balanceOfAccBefore = await provider.getBalance(addresses[1]);
         const balanceOfOwnBefore = await provider.getBalance(addresses[0])
 
-        await kongtamas[1].mint(addresses[1], 2, {value: utils.parseEther("1")});
-        await kongtamas[1].mint(addresses[1], 3, {value: utils.parseEther("1")});
-        await kongtamas[1].mint(addresses[1], 4, {value: utils.parseEther("1")});
+        await kongtamas[1].mint(addresses[1], {value: utils.parseEther("1")});
+        await kongtamas[1].mint(addresses[1], {value: utils.parseEther("1")});
+        await kongtamas[1].mint(addresses[1], {value: utils.parseEther("1")});
         const balanceOfAccAfter = await provider.getBalance(addresses[1]);
         const balanceOfOwnAfter = await provider.getBalance(addresses[0])
 
         console.log("ACC", utils.formatEther(balanceOfAccBefore), utils.formatEther(balanceOfAccAfter))
         console.log("OWN", utils.formatEther(balanceOfOwnBefore), utils.formatEther(balanceOfOwnAfter))
 
-        mint = kongtamas[1].mint(addresses[1], 5, {value: utils.parseEther("0.05")});
+        mint = kongtamas[1].mint(addresses[1], {value: utils.parseEther("0.05")});
          
         await expectRevert(
             mint,

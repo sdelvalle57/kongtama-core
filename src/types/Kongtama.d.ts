@@ -43,7 +43,8 @@ interface KongtamaInterface extends ethers.utils.Interface {
     "setMaxMintPerWallet(uint256)": FunctionFragment;
     "setProxyRegistryAddress(address)": FunctionFragment;
     "setBaseMetadataURI(string)": FunctionFragment;
-    "mint(address,uint256)": FunctionFragment;
+    "getNextTokenID()": FunctionFragment;
+    "mint(address)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "uri(uint256)": FunctionFragment;
     "withdraw()": FunctionFragment;
@@ -121,9 +122,10 @@ interface KongtamaInterface extends ethers.utils.Interface {
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "mint",
-    values: [string, BigNumberish]
+    functionFragment: "getNextTokenID",
+    values?: undefined
   ): string;
+  encodeFunctionData(functionFragment: "mint", values: [string]): string;
   encodeFunctionData(
     functionFragment: "isApprovedForAll",
     values: [string, string]
@@ -191,6 +193,10 @@ interface KongtamaInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "setBaseMetadataURI",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getNextTokenID",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "mint", data: BytesLike): Result;
@@ -501,15 +507,23 @@ export class Kongtama extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
+    /**
+     * calculates the next token ID based on value of _currentTokenID
+     */
+    getNextTokenID(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    /**
+     * calculates the next token ID based on value of _currentTokenID
+     */
+    "getNextTokenID()"(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     mint(
       to: string,
-      tokenId: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "mint(address,uint256)"(
+    "mint(address)"(
       to: string,
-      tokenId: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
@@ -816,15 +830,20 @@ export class Kongtama extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  mint(
-    to: string,
-    tokenId: BigNumberish,
-    overrides?: PayableOverrides
-  ): Promise<ContractTransaction>;
+  /**
+   * calculates the next token ID based on value of _currentTokenID
+   */
+  getNextTokenID(overrides?: CallOverrides): Promise<BigNumber>;
 
-  "mint(address,uint256)"(
+  /**
+   * calculates the next token ID based on value of _currentTokenID
+   */
+  "getNextTokenID()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+  mint(to: string, overrides?: PayableOverrides): Promise<ContractTransaction>;
+
+  "mint(address)"(
     to: string,
-    tokenId: BigNumberish,
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
@@ -1125,17 +1144,19 @@ export class Kongtama extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    mint(
-      to: string,
-      tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    /**
+     * calculates the next token ID based on value of _currentTokenID
+     */
+    getNextTokenID(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "mint(address,uint256)"(
-      to: string,
-      tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    /**
+     * calculates the next token ID based on value of _currentTokenID
+     */
+    "getNextTokenID()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    mint(to: string, overrides?: CallOverrides): Promise<void>;
+
+    "mint(address)"(to: string, overrides?: CallOverrides): Promise<void>;
 
     /**
      * See {IERC721-isApprovedForAll}.
@@ -1469,15 +1490,20 @@ export class Kongtama extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    mint(
-      to: string,
-      tokenId: BigNumberish,
-      overrides?: PayableOverrides
-    ): Promise<BigNumber>;
+    /**
+     * calculates the next token ID based on value of _currentTokenID
+     */
+    getNextTokenID(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "mint(address,uint256)"(
+    /**
+     * calculates the next token ID based on value of _currentTokenID
+     */
+    "getNextTokenID()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    mint(to: string, overrides?: PayableOverrides): Promise<BigNumber>;
+
+    "mint(address)"(
       to: string,
-      tokenId: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
@@ -1797,15 +1823,25 @@ export class Kongtama extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
+    /**
+     * calculates the next token ID based on value of _currentTokenID
+     */
+    getNextTokenID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    /**
+     * calculates the next token ID based on value of _currentTokenID
+     */
+    "getNextTokenID()"(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     mint(
       to: string,
-      tokenId: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "mint(address,uint256)"(
+    "mint(address)"(
       to: string,
-      tokenId: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 

@@ -64,9 +64,9 @@ export class KongtamaController {
         return contract.functions.setBaseMetadataURI(uri);
     }
 
-    public async mint(to: string, tokenId: number, value?: BigNumber): Promise<ContractTransaction> {
+    public async mint(to: string, value?: BigNumber): Promise<ContractTransaction> {
         const contract = await this._getContract();
-        return contract.functions.mint(to, tokenId, { value });
+        return contract.functions.mint(to, { value });
     }
 
     public async withdraw(): Promise<ContractTransaction> {
