@@ -17,7 +17,8 @@
     "lint": "tslint -p tsconfig.json",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "prepublishOnly": "npm run contracts:build && npm run build && npm run copy-dts"
+    "prepublishOnly": "npm run contracts:build && npm run build && npm run copy-dts",
+    "build:meta": "rm -rf ./metadata && mkdir ./metadata && node metadata_gen.js"
   },
   "author": "",
   "license": "ISC",
