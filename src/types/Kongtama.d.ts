@@ -47,6 +47,9 @@ interface KongtamaInterface extends ethers.utils.Interface {
     "isApprovedForAll(address,address)": FunctionFragment;
     "uri(uint256)": FunctionFragment;
     "withdraw()": FunctionFragment;
+    "getPrice()": FunctionFragment;
+    "getMaxMint()": FunctionFragment;
+    "getMaxMintperWallet()": FunctionFragment;
   };
 
   encodeFunctionData(
@@ -127,6 +130,15 @@ interface KongtamaInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "uri", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "withdraw", values?: undefined): string;
+  encodeFunctionData(functionFragment: "getPrice", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "getMaxMint",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getMaxMintperWallet",
+    values?: undefined
+  ): string;
 
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
@@ -188,6 +200,12 @@ interface KongtamaInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "uri", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "getPrice", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "getMaxMint", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getMaxMintperWallet",
+    data: BytesLike
+  ): Result;
 
   events: {
     "Approval(address,address,uint256)": EventFragment;
@@ -523,6 +541,18 @@ export class Kongtama extends Contract {
     withdraw(overrides?: Overrides): Promise<ContractTransaction>;
 
     "withdraw()"(overrides?: Overrides): Promise<ContractTransaction>;
+
+    getPrice(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "getPrice()"(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    getMaxMint(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "getMaxMint()"(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    getMaxMintperWallet(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "getMaxMintperWallet()"(overrides?: CallOverrides): Promise<[BigNumber]>;
   };
 
   /**
@@ -824,6 +854,18 @@ export class Kongtama extends Contract {
 
   "withdraw()"(overrides?: Overrides): Promise<ContractTransaction>;
 
+  getPrice(overrides?: CallOverrides): Promise<BigNumber>;
+
+  "getPrice()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+  getMaxMint(overrides?: CallOverrides): Promise<BigNumber>;
+
+  "getMaxMint()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+  getMaxMintperWallet(overrides?: CallOverrides): Promise<BigNumber>;
+
+  "getMaxMintperWallet()"(overrides?: CallOverrides): Promise<BigNumber>;
+
   callStatic: {
     /**
      * See {IERC721-approve}.
@@ -1123,6 +1165,18 @@ export class Kongtama extends Contract {
     withdraw(overrides?: CallOverrides): Promise<void>;
 
     "withdraw()"(overrides?: CallOverrides): Promise<void>;
+
+    getPrice(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "getPrice()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    getMaxMint(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "getMaxMint()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    getMaxMintperWallet(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "getMaxMintperWallet()"(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   filters: {
@@ -1455,6 +1509,18 @@ export class Kongtama extends Contract {
     withdraw(overrides?: Overrides): Promise<BigNumber>;
 
     "withdraw()"(overrides?: Overrides): Promise<BigNumber>;
+
+    getPrice(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "getPrice()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    getMaxMint(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "getMaxMint()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    getMaxMintperWallet(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "getMaxMintperWallet()"(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -1774,5 +1840,21 @@ export class Kongtama extends Contract {
     withdraw(overrides?: Overrides): Promise<PopulatedTransaction>;
 
     "withdraw()"(overrides?: Overrides): Promise<PopulatedTransaction>;
+
+    getPrice(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "getPrice()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    getMaxMint(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "getMaxMint()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    getMaxMintperWallet(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "getMaxMintperWallet()"(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
   };
 }

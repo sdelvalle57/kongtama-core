@@ -42,7 +42,7 @@
         1909
       ],
       "Ownable": [
-        2014
+        2047
       ],
       "OwnableDelegateProxy": [
         1589
@@ -108,7 +108,7 @@
         "id": 1588,
         "nodeType": "ImportDirective",
         "scope": 1910,
-        "sourceUnit": 2015,
+        "sourceUnit": 2048,
         "src": "221:23:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -213,7 +213,7 @@
               "id": 1597,
               "name": "Ownable",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 2014,
+              "referencedDeclaration": 2047,
               "src": "529:7:9"
             },
             "id": 1598,
@@ -240,7 +240,7 @@
           1343,
           1570,
           1582,
-          2014
+          2047
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
@@ -252,7 +252,7 @@
           981,
           1570,
           1582,
-          2014,
+          2047,
           1343
         ],
         "name": "Kongtama",
@@ -723,7 +723,7 @@
                   "id": 1634,
                   "name": "Ownable",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 2014,
+                  "referencedDeclaration": 2047,
                   "src": "1017:7:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -945,7 +945,7 @@
                   "id": 1659,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1957,
+                  "referencedDeclaration": 1990,
                   "src": "1365:9:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -1061,7 +1061,7 @@
                   "id": 1671,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1957,
+                  "referencedDeclaration": 1990,
                   "src": "1462:9:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -1177,7 +1177,7 @@
                   "id": 1683,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1957,
+                  "referencedDeclaration": 1990,
                   "src": "1581:9:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -1293,7 +1293,7 @@
                   "id": 1695,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1957,
+                  "referencedDeclaration": 1990,
                   "src": "1726:9:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -1410,7 +1410,7 @@
                   "id": 1707,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1957,
+                  "referencedDeclaration": 1990,
                   "src": "1876:9:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -1618,7 +1618,7 @@
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1943,
+                      "referencedDeclaration": 1976,
                       "src": "2106:5:9",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
@@ -3587,7 +3587,7 @@
                               "name": "owner",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1943,
+                              "referencedDeclaration": 1976,
                               "src": "3355:5:9",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
@@ -3983,7 +3983,7 @@
         1909
       ],
       "Ownable": [
-        2014
+        2047
       ],
       "OwnableDelegateProxy": [
         1589
@@ -4049,7 +4049,7 @@
         "id": 1588,
         "nodeType": "ImportDirective",
         "scope": 1910,
-        "sourceUnit": 2015,
+        "sourceUnit": 2048,
         "src": "221:23:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -4154,7 +4154,7 @@
               "id": 1597,
               "name": "Ownable",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 2014,
+              "referencedDeclaration": 2047,
               "src": "529:7:9"
             },
             "id": 1598,
@@ -4181,7 +4181,7 @@
           1343,
           1570,
           1582,
-          2014
+          2047
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
@@ -4193,7 +4193,7 @@
           981,
           1570,
           1582,
-          2014,
+          2047,
           1343
         ],
         "name": "Kongtama",
@@ -4664,7 +4664,7 @@
                   "id": 1634,
                   "name": "Ownable",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 2014,
+                  "referencedDeclaration": 2047,
                   "src": "1017:7:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -4886,7 +4886,7 @@
                   "id": 1659,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1957,
+                  "referencedDeclaration": 1990,
                   "src": "1365:9:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -5002,7 +5002,7 @@
                   "id": 1671,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1957,
+                  "referencedDeclaration": 1990,
                   "src": "1462:9:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -5118,7 +5118,7 @@
                   "id": 1683,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1957,
+                  "referencedDeclaration": 1990,
                   "src": "1581:9:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -5234,7 +5234,7 @@
                   "id": 1695,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1957,
+                  "referencedDeclaration": 1990,
                   "src": "1726:9:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -5351,7 +5351,7 @@
                   "id": 1707,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1957,
+                  "referencedDeclaration": 1990,
                   "src": "1876:9:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -5559,7 +5559,7 @@
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1943,
+                      "referencedDeclaration": 1976,
                       "src": "2106:5:9",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
@@ -7528,7 +7528,7 @@
                               "name": "owner",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1943,
+                              "referencedDeclaration": 1976,
                               "src": "3355:5:9",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
@@ -7899,7 +7899,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-03-16T19:46:48.370Z",
+  "updatedAt": "2022-03-21T17:06:13.901Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
