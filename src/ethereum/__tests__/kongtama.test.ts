@@ -43,7 +43,7 @@ describe("Create2", () => {
         const ownerOf = await kongtamas[0].ownerOf(1);
         expect(ownerOf.toLowerCase()).toEqual(addresses[0].toLowerCase())
 
-        const uri = await kongtamas[0].uri(1);
+        const uri = await kongtamas[0].tokenURI(1);
         expect(uri.toLowerCase()).toEqual(metadataURI.toLocaleLowerCase()+"1")
     })
 

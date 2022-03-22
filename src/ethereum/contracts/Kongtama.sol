@@ -123,7 +123,7 @@ contract Kongtama is Ownable, ERC721 {
         return super.isApprovedForAll(owner, operator);
     }
 
-    function uri(uint256 _id) public view returns (string memory) {
+    function tokenURI(uint256 _id) public override view returns (string memory) {
         require(_exists(_id), "ERC721Tradable#uri: NONEXISTENT_TOKEN");
         return bytes(_baseMetadataURI).length > 0 ? string(abi.encodePacked(_baseMetadataURI, _id.toString())) : "";
     }

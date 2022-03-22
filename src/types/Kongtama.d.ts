@@ -35,7 +35,6 @@ interface KongtamaInterface extends ethers.utils.Interface {
     "setApprovalForAll(address,bool)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "symbol()": FunctionFragment;
-    "tokenURI(uint256)": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "setPrice(uint256)": FunctionFragment;
@@ -46,7 +45,7 @@ interface KongtamaInterface extends ethers.utils.Interface {
     "getNextTokenID()": FunctionFragment;
     "mint(address)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
-    "uri(uint256)": FunctionFragment;
+    "tokenURI(uint256)": FunctionFragment;
     "withdraw()": FunctionFragment;
     "getPrice()": FunctionFragment;
     "getMaxMint()": FunctionFragment;
@@ -90,10 +89,6 @@ interface KongtamaInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "tokenURI",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
     functionFragment: "transferFrom",
     values: [string, string, BigNumberish]
   ): string;
@@ -130,7 +125,10 @@ interface KongtamaInterface extends ethers.utils.Interface {
     functionFragment: "isApprovedForAll",
     values: [string, string]
   ): string;
-  encodeFunctionData(functionFragment: "uri", values: [BigNumberish]): string;
+  encodeFunctionData(
+    functionFragment: "tokenURI",
+    values: [BigNumberish]
+  ): string;
   encodeFunctionData(functionFragment: "withdraw", values?: undefined): string;
   encodeFunctionData(functionFragment: "getPrice", values?: undefined): string;
   encodeFunctionData(
@@ -172,7 +170,6 @@ interface KongtamaInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "tokenURI", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "transferFrom",
     data: BytesLike
@@ -204,7 +201,7 @@ interface KongtamaInterface extends ethers.utils.Interface {
     functionFragment: "isApprovedForAll",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "uri", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "tokenURI", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "getPrice", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "getMaxMint", data: BytesLike): Result;
@@ -406,22 +403,6 @@ export class Kongtama extends Contract {
     "symbol()"(overrides?: CallOverrides): Promise<[string]>;
 
     /**
-     * See {IERC721Metadata-tokenURI}.
-     */
-    tokenURI(
-      tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
-
-    /**
-     * See {IERC721Metadata-tokenURI}.
-     */
-    "tokenURI(uint256)"(
-      tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
-
-    /**
      * See {IERC721-transferFrom}.
      */
     transferFrom(
@@ -545,9 +526,9 @@ export class Kongtama extends Contract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
-    uri(_id: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
+    tokenURI(_id: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
 
-    "uri(uint256)"(
+    "tokenURI(uint256)"(
       _id: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[string]>;
@@ -732,19 +713,6 @@ export class Kongtama extends Contract {
   "symbol()"(overrides?: CallOverrides): Promise<string>;
 
   /**
-   * See {IERC721Metadata-tokenURI}.
-   */
-  tokenURI(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
-
-  /**
-   * See {IERC721Metadata-tokenURI}.
-   */
-  "tokenURI(uint256)"(
-    tokenId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<string>;
-
-  /**
    * See {IERC721-transferFrom}.
    */
   transferFrom(
@@ -865,9 +833,12 @@ export class Kongtama extends Contract {
     overrides?: CallOverrides
   ): Promise<boolean>;
 
-  uri(_id: BigNumberish, overrides?: CallOverrides): Promise<string>;
+  tokenURI(_id: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
-  "uri(uint256)"(_id: BigNumberish, overrides?: CallOverrides): Promise<string>;
+  "tokenURI(uint256)"(
+    _id: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<string>;
 
   withdraw(overrides?: Overrides): Promise<ContractTransaction>;
 
@@ -1049,19 +1020,6 @@ export class Kongtama extends Contract {
     "symbol()"(overrides?: CallOverrides): Promise<string>;
 
     /**
-     * See {IERC721Metadata-tokenURI}.
-     */
-    tokenURI(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
-
-    /**
-     * See {IERC721Metadata-tokenURI}.
-     */
-    "tokenURI(uint256)"(
-      tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<string>;
-
-    /**
      * See {IERC721-transferFrom}.
      */
     transferFrom(
@@ -1176,9 +1134,9 @@ export class Kongtama extends Contract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    uri(_id: BigNumberish, overrides?: CallOverrides): Promise<string>;
+    tokenURI(_id: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
-    "uri(uint256)"(
+    "tokenURI(uint256)"(
       _id: BigNumberish,
       overrides?: CallOverrides
     ): Promise<string>;
@@ -1392,22 +1350,6 @@ export class Kongtama extends Contract {
     "symbol()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     /**
-     * See {IERC721Metadata-tokenURI}.
-     */
-    tokenURI(
-      tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    /**
-     * See {IERC721Metadata-tokenURI}.
-     */
-    "tokenURI(uint256)"(
-      tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    /**
      * See {IERC721-transferFrom}.
      */
     transferFrom(
@@ -1525,9 +1467,9 @@ export class Kongtama extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    uri(_id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    tokenURI(_id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
-    "uri(uint256)"(
+    "tokenURI(uint256)"(
       _id: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -1722,22 +1664,6 @@ export class Kongtama extends Contract {
     "symbol()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     /**
-     * See {IERC721Metadata-tokenURI}.
-     */
-    tokenURI(
-      tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    /**
-     * See {IERC721Metadata-tokenURI}.
-     */
-    "tokenURI(uint256)"(
-      tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    /**
      * See {IERC721-transferFrom}.
      */
     transferFrom(
@@ -1863,12 +1789,12 @@ export class Kongtama extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    uri(
+    tokenURI(
       _id: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "uri(uint256)"(
+    "tokenURI(uint256)"(
       _id: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;

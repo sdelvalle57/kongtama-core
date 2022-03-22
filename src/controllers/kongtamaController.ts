@@ -149,4 +149,9 @@ export class KongtamaController {
         const contract = await this._getContract();
         return contract.getApproved(tokenId);
     }
+
+    public async nextTokenId(): Promise<BigNumber> {
+        const contract = await this._getContract();
+        return contract.getNextTokenID();
+    }
 }

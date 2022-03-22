@@ -7,7 +7,7 @@ const description = "This is a uniquely designed and hand crafted KONGTAMA NFT. 
 // json data
 for(let j = 1; j <= 1000; j++) {
     const name = "Kongtama #"+j.toString().padStart(4, '0');
-    const image = `${url}KONGTAMA (${j.toString()})`;
+    const image = `${url}KONGTAMA (${j.toString()}).png`;
 
     const jsonData = {
         name,
