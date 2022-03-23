@@ -14,6 +14,6 @@ module.exports = async (deployer, network) => {
         owner = "0xB1F25Ce454F3E02150ef27Eaac8836C919a21B2A"
     }
 
-    await deployer.deploy(Kongtama, owner, proxyRegistryAddress, price, 10, metadataURI);    
+    await deployer.deploy(Kongtama, owner, proxyRegistryAddress, price, 1000, metadataURI);    
 
 }

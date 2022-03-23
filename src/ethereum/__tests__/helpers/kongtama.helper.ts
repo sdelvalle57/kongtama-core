@@ -15,10 +15,6 @@ export const deployKongtama = async (
     return deployContract<Kongtama>(signer, artifactKongtama, owner, proxyRegistry, price, maxMint, baseMetadataUri);
 }
 
-export const mint = (contract: Kongtama, receiver: string, tokenId: number): Promise<ContractTransaction> => {
-    return contract.functions.mint(receiver, tokenId);
-}
-
 export const getKongtama= (signer: Signer, address: string): Promise<Kongtama> => {
     return getContract<Kongtama>(address, artifactKongtama.abi, signer);
 }

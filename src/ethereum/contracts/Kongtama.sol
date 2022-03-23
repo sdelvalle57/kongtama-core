@@ -84,28 +84,36 @@ contract Kongtama is Ownable, ERC721 {
     }
 
 
-    function mint(address to) public payable {
-        _incrementTokenTypeId();
+    function mint(uint8 amount) public payable {
+        require(amount > 0, "Wrong batch amout");
+
         uint256 tokenId = _currentTokenID;
-        require(tokenId <= _maxMint, "TokenId is greater than maxMint");
+        require(tokenId + amount <= _maxMint, "Amount reaches maxMint");
 
         address owner = owner();
         address sender = _msgSender();
-        uint256 tokenPrice = _price;
-        uint256 value = msg.value;
-
         if(sender == owner) {
-            _safeMint(to, tokenId);
+            _mintBatch(sender, amount);
             return;
         }
 
-        require(value >= tokenPrice, "Wrong value");
-        require(mintsPerWallet[sender] < _maxMintPerWallet, "Wallet cant mint more than maxMintPerWallet");
+        require(mintsPerWallet[sender] + amount <= _maxMintPerWallet, "Reached maxMintPerWallet");
 
-        mintsPerWallet[sender] += 1;
+        uint256 value = msg.value;
+        uint256 tokenPrice = _price;
+        require(value >= tokenPrice*amount, "Not enough ETH");
+
         payable(owner).transfer(value);
+        _mintBatch(sender, amount);
+    }
 
-        _safeMint(to, tokenId);
+    function _mintBatch(address to, uint8 amount) internal {
+        for (uint i=0; i < amount; i++){
+            _incrementTokenTypeId();
+            uint256 tokenId = _currentTokenID;
+            mintsPerWallet[to] += 1;
+            _safeMint(to, tokenId);
+        }
     }
 
     function isApprovedForAll(address owner, address operator)

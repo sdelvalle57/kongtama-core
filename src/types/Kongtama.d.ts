@@ -43,7 +43,7 @@ interface KongtamaInterface extends ethers.utils.Interface {
     "setProxyRegistryAddress(address)": FunctionFragment;
     "setBaseMetadataURI(string)": FunctionFragment;
     "getNextTokenID()": FunctionFragment;
-    "mint(address)": FunctionFragment;
+    "mint(uint8)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "tokenURI(uint256)": FunctionFragment;
     "withdraw()": FunctionFragment;
@@ -120,7 +120,7 @@ interface KongtamaInterface extends ethers.utils.Interface {
     functionFragment: "getNextTokenID",
     values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: "mint", values: [string]): string;
+  encodeFunctionData(functionFragment: "mint", values: [BigNumberish]): string;
   encodeFunctionData(
     functionFragment: "isApprovedForAll",
     values: [string, string]
@@ -499,12 +499,12 @@ export class Kongtama extends Contract {
     "getNextTokenID()"(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     mint(
-      to: string,
+      amount: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
-    "mint(address)"(
-      to: string,
+    "mint(uint8)"(
+      amount: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
@@ -808,10 +808,13 @@ export class Kongtama extends Contract {
    */
   "getNextTokenID()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-  mint(to: string, overrides?: PayableOverrides): Promise<ContractTransaction>;
+  mint(
+    amount: BigNumberish,
+    overrides?: PayableOverrides
+  ): Promise<ContractTransaction>;
 
-  "mint(address)"(
-    to: string,
+  "mint(uint8)"(
+    amount: BigNumberish,
     overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
@@ -1112,9 +1115,12 @@ export class Kongtama extends Contract {
      */
     "getNextTokenID()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-    mint(to: string, overrides?: CallOverrides): Promise<void>;
+    mint(amount: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
-    "mint(address)"(to: string, overrides?: CallOverrides): Promise<void>;
+    "mint(uint8)"(
+      amount: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
 
     /**
      * See {IERC721-isApprovedForAll}.
@@ -1442,10 +1448,13 @@ export class Kongtama extends Contract {
      */
     "getNextTokenID()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-    mint(to: string, overrides?: PayableOverrides): Promise<BigNumber>;
+    mint(
+      amount: BigNumberish,
+      overrides?: PayableOverrides
+    ): Promise<BigNumber>;
 
-    "mint(address)"(
-      to: string,
+    "mint(uint8)"(
+      amount: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
@@ -1762,12 +1771,12 @@ export class Kongtama extends Contract {
     ): Promise<PopulatedTransaction>;
 
     mint(
-      to: string,
+      amount: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
-    "mint(address)"(
-      to: string,
+    "mint(uint8)"(
+      amount: BigNumberish,
       overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 

@@ -39,41 +39,56 @@ describe("Create2", () => {
     })
 
     it("Owner Minting", async () => {
-        await kongtamas[0].mint(addresses[0]);
-        const ownerOf = await kongtamas[0].ownerOf(1);
+        await kongtamas[0].mint(5); //mints 5
+        let ownerOf = await kongtamas[0].ownerOf(1);
         expect(ownerOf.toLowerCase()).toEqual(addresses[0].toLowerCase())
+
+        ownerOf = await kongtamas[0].ownerOf(5);
+        expect(ownerOf.toLowerCase()).toEqual(addresses[0].toLowerCase())
+
+        const balanceOf = await kongtamas[0].balanceOf(addresses[0]);
+        expect(balanceOf.toNumber()).toEqual(5)
 
         const uri = await kongtamas[0].tokenURI(1);
         expect(uri.toLowerCase()).toEqual(metadataURI.toLocaleLowerCase()+"1")
     })
 
     it("User minting", async () => {
-        await kongtamas[0].setMaxMintPerWallet(3);
+        await kongtamas[0].setMaxMintPerWallet(10);
 
         //tries to mint with no ether
-        let mint = kongtamas[1].mint(addresses[1]);
+        let mint = kongtamas[1].mint(4, {value: utils.parseEther("0.1999")});
         await expectRevert(
             mint,
-            `Wrong value`
+            `Not enough ETH`
         );
 
         const balanceOfAccBefore = await provider.getBalance(addresses[1]);
         const balanceOfOwnBefore = await provider.getBalance(addresses[0])
 
-        await kongtamas[1].mint(addresses[1], {value: utils.parseEther("1")});
-        await kongtamas[1].mint(addresses[1], {value: utils.parseEther("1")});
-        await kongtamas[1].mint(addresses[1], {value: utils.parseEther("1")});
+        await kongtamas[1].mint(8, {value: utils.parseEther("0.4")}); //mints 8
+
         const balanceOfAccAfter = await provider.getBalance(addresses[1]);
         const balanceOfOwnAfter = await provider.getBalance(addresses[0])
 
         console.log("ACC", utils.formatEther(balanceOfAccBefore), utils.formatEther(balanceOfAccAfter))
         console.log("OWN", utils.formatEther(balanceOfOwnBefore), utils.formatEther(balanceOfOwnAfter))
 
-        mint = kongtamas[1].mint(addresses[1], {value: utils.parseEther("0.05")});
-         
+        const ownerOf = await kongtamas[0].ownerOf(6);
+        expect(ownerOf.toLowerCase()).toEqual(addresses[1].toLowerCase())
+
+        //tries to mint more than maxMIntPerWallet
+        mint = kongtamas[1].mint(7, {value: utils.parseEther("0.35")});
         await expectRevert(
             mint,
-            `Wallet cant mint more than maxMintPerWallet`
+            `Reached maxMintPerWallet`
+        );
+
+        //tries to mint more than allowed
+        mint = kongtamas[0].functions.mint(8)
+        await expectRevert(
+          mint,
+          `Amount reaches maxMint`
         );
 
 
